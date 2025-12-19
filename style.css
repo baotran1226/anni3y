@@ -1,0 +1,298 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(120deg, #9e5ec6, #67c0cf);
+  color: #fff;
+  text-align: center;
+  overflow: hidden;
+}
+
+/* Intro */
+#intro {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* #intro p {
+  font-size: 28px;
+  max-width: 600px;
+  margin: 0 20px 30px;
+  line-height: 1.5;
+} */
+.shake-text {
+  display: inline-block;
+  font-size: 28px;
+  font-weight: 600;
+  animation: sway 2.5s ease-in-out infinite;
+}
+
+@keyframes sway {
+  0%   { transform: rotate(0deg); }
+  25%  { transform: rotate(3deg); }
+  50%  { transform: rotate(0deg); }
+  75%  { transform: rotate(-3deg); }
+  100% { transform: rotate(0deg); }
+}
+
+#startBtn {
+  padding: 14px 30px;
+  border: none;
+  border-radius: 30px;
+  background: #fff;
+  color: #ff4f81;
+  font-size: 25px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* Game */
+#game {
+  min-height: 100vh;            /* chiếm toàn màn hình */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;      /* CĂN GIỮA DỌC */
+  align-items: center;          /* CĂN GIỮA NGANG */
+  text-align: center;
+}
+
+
+.board {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 12px;
+
+  width: 100%;
+  max-width: 420px;   /* 🔥 CHỐT KÍCH THƯỚC */
+  margin: 16px auto;
+}
+
+
+.card {
+  width: 72px;
+  height: 72px;
+  perspective: 1000px;
+  cursor: pointer;
+}
+
+.card-inner {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+}
+
+.card.flipped .card-inner {
+  transform: rotateY(180deg);
+}
+
+.card-front,
+.card-back {
+  position: absolute;
+  inset: 0;
+  border-radius: 12px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-size: 28px;
+  backface-visibility: hidden;
+  user-select: none;
+}
+
+.card-front {
+  background: #ffe6ec;
+}
+
+.card-back {
+  background: #ffb3c6;
+  transform: rotateY(180deg);
+}
+
+.card:active .card-inner {
+  transform: scale(0.95);
+}
+@media (max-width: 480px) {
+  .board {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .card {
+    width: 64px;
+    height: 64px;
+  }
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  50% { transform: translateX(5px); }
+  75% { transform: translateX(-5px); }
+}
+
+.shake {
+  animation: shake 0.4s;
+}
+
+.heart {
+  position: fixed;
+  font-size: 20px;
+  animation: fly 1s ease-out forwards;
+  pointer-events: none;
+}
+
+@keyframes fly {
+  0% {
+    transform: translate(-50%, 0) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, -80px) scale(1.6);
+    opacity: 0;
+  }
+}
+
+.sad-message {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #ff4f81;
+  color: white;
+  padding: 12px 22px;
+  border-radius: 20px;
+  font-weight: bold;
+  font-size: 14px;
+
+  z-index: 9999; /* 🔥 CAO HƠN OVERLAY + HEART */
+
+  animation: sadPop 1.6s ease forwards;
+}
+
+@keyframes fade {
+  0% { opacity: 0; transform: translate(-50%, -50%) scale(0.8); }
+  20% { opacity: 1; }
+  100% { opacity: 0; transform: translate(-50%, -50%) scale(1.1); }
+}
+
+
+/* End */
+#end {
+  display: none;
+  padding: 30px;
+  animation: fadeIn 2s ease;
+}
+
+.letter {
+  background: rgba(255,255,255,0.15);
+  padding: 20px;
+  border-radius: 20px;
+  max-width: 420px;
+  margin: auto;
+  font-size: 27px;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+/* MEMORY OVERLAY */
+/* #memoryOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+} */
+
+.memory-box {
+  background: #fff;
+  padding: 20px;
+  border-radius: 16px;
+  width: 90%;
+  max-width: 360px;
+  text-align: center;
+}
+
+
+/* Ảnh trong overlay kỷ niệm */
+#memoryImage {
+  width: 100%;
+  max-height: 240px;
+  object-fit: cover;       /* Cắt ảnh gọn, không méo */
+  border-radius: 14px;
+  margin-bottom: 12px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+}
+
+@media (max-width: 480px) {
+  #memoryImage {
+    max-height: 200px;
+    border-radius: 12px;
+  }
+}
+
+#memoryDate {
+  font-size: 25px;
+  font-weight: 600;
+  color: #ff4d6d;       /* Màu nổi bật */
+  margin: 10px 0 6px;
+  text-align: center;
+}
+
+#memoryText {
+  font-style: italic;
+  font-size: 30px;
+  color: #555;
+  line-height: 1.6;
+}
+#closeMemory {
+  margin-top: 16px;
+  padding: 12px 26px;
+  border: none;
+  border-radius: 999px;
+
+  background: linear-gradient(135deg, #ff758c, #ff7eb3);
+  color: #fff;
+
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+
+  cursor: pointer;
+  transition: all 0.25s ease;
+  box-shadow: 0 8px 18px rgba(255, 120, 150, 0.35);
+}
+
+#memoryOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(4px);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+
+  animation: overlayFade 0.4s ease forwards;
+}
+
+@keyframes overlayFade {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+
+
+
+

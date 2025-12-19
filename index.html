@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <title>3 Years With You ❤️</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- MEMORY OVERLAY -->
+    <div id="memoryOverlay" class="overlay">
+        <div class="memory-box">
+            <img id="memoryImage" alt="memory">
+            <h2 id="memoryDate"></h2>
+            <p id="memoryText"></p>
+            <button id="closeMemory">Tiếp tục</button>
+        </div>
+    </div>
+
+    <!-- Nhạc nền -->
+    <audio id="music" loop>
+        <source src="https://assets.mixkit.co/music/preview/mixkit-love-110.mp3">
+    </audio>
+
+    <!-- INTRO -->
+    <!-- <div id="intro">
+        <h1>💖 3 Năm Bên Nhau 💖</h1>
+        <p>Anh có muốn chơi một trò chơi nhỏ không?</p>
+        <button id="startBtn">Bắt đầu</button>
+    </div> -->
+
+    <div id="intro">
+        <h1>💖 Hello !!! Chào mừng anh đến với Mini Game Love 💖</h1>
+        <p class="shake-text">Anh có muốn chơi một trò chơi nhỏ không?</p>
+        <button id="startBtn">Bắt đầu</button>
+    </div>
+
+    <!-- GAME -->
+    <div id="game">
+        <h2>✨ Lật thẻ để mở lại kỷ niệm ✨</h2>
+        <p id="timer">⏱️ 0 giây</p>
+        <div class="board" id="board"></div>
+    </div>
+
+    <!-- END -->
+    <div id="end" onclick="goFireworks()">
+        <h1>🎉 Chúc mừng kỷ niệm 3 năm 🎉</h1>
+        <div class="letter">
+            <p>
+                3 năm không phải là quãng thời gian quá dài,<br>
+                nhưng đủ để em nhận ra một điều:<br><br>
+                <strong>Yêu anh là quyết định đúng đắn ❤️</strong>
+                <br>
+                <strong>Cảm ơn anh đã đến, đã chiều chuộng và yêu em.</strong>
+            </p>
+            <!-- <p id="loveDays"></p> -->
+            <p><i>(Chạm để xem điều bất ngờ 🎆)</i></p>
+        </div>
+    </div>
+
+
+    <script src="script.js"></script>
+</body>
+
+</html>
