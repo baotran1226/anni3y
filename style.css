@@ -11,6 +11,8 @@ body {
   overflow: hidden;
   padding-top: env(safe-area-inset-top);
   padding-bottom: env(safe-area-inset-bottom);
+  justify-content: center;
+  align-items: center;
 }
 
 /* Intro */
@@ -62,6 +64,7 @@ body {
   justify-content: center;      /* CĂN GIỮA DỌC */
   align-items: center;          /* CĂN GIỮA NGANG */
   text-align: center;
+  margin-top: 250px;
 }
 
 
@@ -195,6 +198,8 @@ body {
   flex-direction: column;
   justify-content: center;   /* GIỮA DỌC */
   align-items: center;       /* GIỮA NGANG */
+
+  margin-top: 20px;
 
   padding: 30px;
   animation: fadeIn 2s ease;

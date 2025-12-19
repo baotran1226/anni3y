@@ -293,4 +293,10 @@ function showSadMessage() {
     setTimeout(() => msg.remove(), 1600);
 }
 
+function showEnd() {
+    document.getElementById("game").style.display = "none";
+    document.getElementById("end").style.display = "flex";
+}
+
+
 
