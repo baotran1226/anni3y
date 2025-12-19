@@ -5,10 +5,12 @@
 body {
   margin: 0;
   font-family: 'Segoe UI', sans-serif;
-  background: linear-gradient(120deg, #9e5ec6, #67c0cf);
+  background: linear-gradient(120deg, #022751, #67c0cf);
   color: #fff;
   text-align: center;
   overflow: hidden;
+  padding-top: env(safe-area-inset-top);
+  padding-bottom: env(safe-area-inset-bottom);
 }
 
 /* Intro */
@@ -187,9 +189,17 @@ body {
 /* End */
 #end {
   display: none;
+
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;   /* GIỮA DỌC */
+  align-items: center;       /* GIỮA NGANG */
+
   padding: 30px;
   animation: fadeIn 2s ease;
 }
+
 
 .letter {
   background: rgba(255,255,255,0.15);

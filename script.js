@@ -13,7 +13,7 @@ const memories = [
         id: 2,
         icon: '🌊',
         img: 'images/21_06_24.jpg',
-        date: '21/01/2024',
+        date: '21/06/2024',
         text: 'Vũng Tàu năm trước, mưa điên luonnn.'
     },
     {
