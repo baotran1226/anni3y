@@ -19,6 +19,13 @@
             display: block;
         }
 
+        canvas {
+            position: fixed;
+            inset: 0;
+            z-index: 1;
+        }
+
+
         .message {
             position: fixed;
             top: 40%;
@@ -37,6 +44,87 @@
             font-size: 20px;
             opacity: 0.9;
         }
+
+        /* Khung chứa */
+        .hanging-wrapper {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-evenly;
+            z-index: 5;
+            pointer-events: none;
+        }
+
+        /* Mỗi ảnh */
+        .hanging-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Dây treo */
+        .string {
+            width: 2px;
+            height: 110px;
+            background: rgba(255, 255, 255, 0.6);
+        }
+
+        /* Ảnh */
+        .hanging-item img {
+            width: 130px;
+            border-radius: 12px;
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.4);
+            transform-origin: top center;
+            animation: swing 3s ease-in-out infinite;
+        }
+
+        /* TẠO NHỊP KHÁC NHAU */
+        .hanging-item:nth-child(2) img {
+            animation-duration: 3.5s;
+        }
+
+        .hanging-item:nth-child(3) img {
+            animation-duration: 2.8s;
+        }
+
+        .hanging-item:nth-child(4) img {
+            animation-duration: 3.2s;
+        }
+
+        .hanging-item:nth-child(5) img {
+            animation-duration: 4s;
+        }
+
+        /* Đu đưa */
+        @keyframes swing {
+            0% {
+                transform: rotate(-4deg);
+            }
+
+            50% {
+                transform: rotate(4deg);
+            }
+
+            100% {
+                transform: rotate(-4deg);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hanging-item img {
+                width: 90px;
+            }
+
+            .string {
+                height: 80px;
+            }
+        }
+
+        .hanging-item img {
+            filter: drop-shadow(0 0 12px rgba(255, 120, 160, 0.6));
+        }
     </style>
 </head>
 
@@ -48,6 +136,34 @@
         <h1>💖 Happy anniversary 3 Years 💖</h1>
         <p>Chúng ta sẽ còn nhiều kỷ niệm nữa nhé ✨</p>
     </div>
+
+    <div class="hanging-wrapper">
+        <div class="hanging-item">
+            <div class="string"></div>
+            <img src="images/21_06_24.jpg">
+        </div>
+
+        <div class="hanging-item">
+            <div class="string"></div>
+            <img src="images/22_12_24.jpg">
+        </div>
+
+        <div class="hanging-item">
+            <div class="string"></div>
+            <img src="images/22_11_25.jpg">
+        </div>
+
+        <div class="hanging-item">
+            <div class="string"></div>
+            <img src="images/24_04_23.jpg">
+        </div>
+
+        <div class="hanging-item">
+            <div class="string"></div>
+            <img src="images/24_12_22.jpg">
+        </div>
+    </div>
+
 
     <script src="fireworks.js"></script>
 </body>

@@ -250,16 +250,11 @@ function resetTurn() {
  ********************/
 function finishGame() {
     clearInterval(timerInterval);
-    game.style.display = 'none';
-    end.style.display = 'block';
 
-    const startDate = new Date('2022-12-22');
-    const today = new Date();
-    const days = Math.floor((today - startDate) / (1000 * 60 * 60 * 24));
-
-    document.getElementById('loveDays').innerText =
-        `Chúng ta đã bên nhau ${days} ngày 💕`;
+    // chuyển sang trang end
+    window.location.href = "end.html";
 }
+
 
 function goFireworks() {
     window.location.href = 'fireworks.html';
