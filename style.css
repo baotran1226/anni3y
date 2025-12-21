@@ -13,6 +13,8 @@ body {
   padding-bottom: env(safe-area-inset-bottom);
   justify-content: center;
   align-items: center;
+  overscroll-behavior: none;
+  touch-action: manipulation;
 }
 
 /* Intro */
@@ -57,34 +59,58 @@ body {
 }
 
 /* Game */
-#game {
-  min-height: 100vh;            /* chiếm toàn màn hình */
+/* #game {
+  min-height: 100vh;            
   display: flex;
   flex-direction: column;
-  justify-content: center;      /* CĂN GIỮA DỌC */
-  align-items: center;          /* CĂN GIỮA NGANG */
+  justify-content: center;      
+  align-items: center;          
   text-align: center;
   margin-top: 250px;
+  overflow: hidden;
+} */
+
+#game {
+  display: none; /* lúc đầu ẩn */
+  min-height: 100vh;
+  width: 100%;
+  padding-top: 80px;
+  text-align: center;
 }
 
 
 .board {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  gap: 12px;
+  gap: 14px;
 
-  width: 100%;
+  width: 90vw;
   max-width: 420px;   /* 🔥 CHỐT KÍCH THƯỚC */
-  margin: 16px auto;
+  margin: 20px auto; 
+  justify-content: center;
+  align-items: center;
 }
 
 
-.card {
+/* .card {
   width: 72px;
   height: 72px;
   perspective: 1000px;
   cursor: pointer;
+} */
+
+.card {
+  aspect-ratio: 1 / 1;
+  background: #ffe6ec;
+  border-radius: 14px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-size: 28px; /* desktop */
 }
+
 
 .card-inner {
   width: 100%;

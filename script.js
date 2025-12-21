@@ -85,7 +85,12 @@ const sadMessages = [
 /********************
  * START GAME
  ********************/
-startBtn.addEventListener('click', startGame);
+startBtn.addEventListener('click', () => {
+    intro.style.display = 'none';
+    game.style.display = 'block';
+
+    createCards(); // ⚠️ BẮT BUỘC GỌI LẠI
+});
 
 function startGame() {
     intro.style.display = 'none';
@@ -293,5 +298,62 @@ function showEnd() {
     document.getElementById("end").style.display = "flex";
 }
 
+const introMusic = document.getElementById('introMusic');
+const gameMusic = document.getElementById('gameMusic');
+
+let audioUnlocked = false;
+
+/* Mở khóa audio cho mobile */
+function unlockAudio() {
+    if (audioUnlocked) return;
+    audioUnlocked = true;
+
+    introMusic.volume = 0;
+    introMusic.play().catch(() => { });
+
+    // fade in intro
+    let v = 0;
+    const fade = setInterval(() => {
+        v += 0.05;
+        introMusic.volume = Math.min(v, 0.8);
+        if (v >= 0.8) clearInterval(fade);
+    }, 100);
+}
+
+/* Chạm / click lần đầu */
+document.body.addEventListener('touchstart', unlockAudio, { once: true });
+document.body.addEventListener('click', unlockAudio, { once: true });
+
+
+startBtn.addEventListener('click', () => {
+    // Ẩn intro – hiện game
+    intro.style.display = 'none';
+    game.style.display = 'block';
+
+    // Fade out intro
+    let v = introMusic.volume;
+    const fadeOut = setInterval(() => {
+        v -= 0.05;
+        introMusic.volume = Math.max(v, 0);
+        if (v <= 0) {
+            clearInterval(fadeOut);
+            introMusic.pause();
+            introMusic.currentTime = 0;
+        }
+    }, 80);
+
+    // Play game music
+    setTimeout(() => {
+        gameMusic.volume = 0;
+        gameMusic.play();
+
+        let vg = 0;
+        const fadeIn = setInterval(() => {
+            vg += 0.05;
+            gameMusic.volume = Math.min(vg, 0.8);
+            if (vg >= 0.8) clearInterval(fadeIn);
+        }, 100);
+    }, 500);
+});
 
 

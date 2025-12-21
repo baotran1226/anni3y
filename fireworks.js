@@ -80,3 +80,18 @@ setInterval(() => {
 }, 800);
 
 animate();
+
+const fireworksMusic = document.getElementById('fireworksMusic');
+
+window.addEventListener('load', () => {
+    fireworksMusic.volume = 0;
+    fireworksMusic.play().catch(() => { });
+
+    // fade in cho mượt
+    let v = 0;
+    const fade = setInterval(() => {
+        v += 0.04;
+        fireworksMusic.volume = Math.min(v, 0.9);
+        if (v >= 0.9) clearInterval(fade);
+    }, 100);
+});

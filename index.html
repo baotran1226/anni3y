@@ -20,9 +20,16 @@
     </div>
 
     <!-- Nhạc nền -->
-    <audio id="music" loop>
-        <source src="https://assets.mixkit.co/music/preview/mixkit-love-110.mp3">
+    <!-- Nhạc INTRO -->
+    <audio id="introMusic" loop playsinline>
+        <source src="audio/intro.mp3" type="audio/mpeg">
     </audio>
+
+    <!-- Nhạc GAME -->
+    <audio id="gameMusic" loop playsinline>
+        <source src="audio/game.mp3" type="audio/mpeg">
+    </audio>
+
 
     <!-- INTRO -->
     <!-- <div id="intro">
@@ -40,7 +47,7 @@
     <!-- GAME -->
     <div id="game">
         <h2>✨ Lật thẻ để mở lại kỷ niệm ✨</h2>
-        <p id="timer">⏱️ 0 giây</p>
+
         <div class="board" id="board"></div>
     </div>
 
