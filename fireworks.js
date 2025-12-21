@@ -81,7 +81,24 @@ setInterval(() => {
 
 animate();
 
-const fireworksMusic = document.getElementById('fireworksMusic');
+
+const overlay = document.getElementById('audioOverlay');
+const music = document.getElementById('fireworksMusic');
+
+overlay.addEventListener('click', () => {
+    music.volume = 0;
+    music.play();
+
+    let v = 0;
+    const fade = setInterval(() => {
+        v += 0.05;
+        music.volume = Math.min(v, 0.9);
+        if (v >= 0.9) clearInterval(fade);
+    }, 100);
+
+    overlay.style.display = 'none';
+});
+
 
 window.addEventListener('load', () => {
     fireworksMusic.volume = 0;
